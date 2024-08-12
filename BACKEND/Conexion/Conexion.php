@@ -15,7 +15,7 @@ class conn
         $host = "localhost";
         $usuario = "root";
         $password = "";
-        $bd = "biblioteca";
+        $bd = "mercadoLibre";
         $puerto = 3306;
         try {
             $mysql = new mysqli($host, $usuario, $password, $bd, $puerto);
