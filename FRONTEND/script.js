@@ -36,7 +36,7 @@ function mostrarProductos(productos) {
 
 }
 async function guardarProducto(id) {
-  const producto = productos.find((producto) => producto.id = id);
+  const producto = productos.find((producto) => producto.id == id);
   const formData = new FormData();
   formData.append("id", producto.id);
   formData.append("titulo", producto.title);
@@ -47,8 +47,8 @@ async function guardarProducto(id) {
     method: "post",
     body: formData
   })
-const datos = await respuesta.text();
-console.log(datos)
+  const datos = await respuesta.json();
+  console.log(datos)
 
 
 }
