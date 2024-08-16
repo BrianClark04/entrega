@@ -1,35 +1,39 @@
 
-const apiUrl = "https://api.mercadolibre.com/sites/MLU/search?category=MLU1144";
+async function obtenerProductos() {
+    let url = "https://api.mercadolibre.com/sites/MLU/search?category=MLU1144"; 
+    try {
+      let respuesta = await fetch(url); 
+      let datos = await respuesta.json();
+      return datos.results; 
+    }
+    catch (error){
+      console.error('error al cargar los productos')
+    }
+   
+}
 
-function fetchAndDisplayProducts() {
-    fetch(apiUrl)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Error al obtener datos de la API');
-            }
-            return response.json();
-        })
-        .then(data => {
-            const products = data.results ;
-            
-            const tableBody = document.querySelector("#productTable tbody");
-            tableBody.innerHTML = ""; 
+async function imprimirProd(){
+  const prod = await obtenerProductos();
+  prod.forEach((element) => console.log(element));
+  console.log(prod);
+}
 
-            products.forEach(product => {
-                const row = document.createElement("tr");
-                row.innerHTML = `
-                    <td>${product.title || 'N/A'}</td>
-                    <td>${product.price || 'N/A'}</td>
-                    <td>${product.currency_id || 'N/A'}</td>
-                    <td>${product.available_quantity || 'N/A'}</td>
-                `;
-                tableBody.appendChild(row);
-            })
-            sendProductsToBackend(products);
-        })
-        .catch(error => {
-            console.error(error.message);
-        });
+imprimirProd();
+
+function mostrarProductos(){
+let div = document.querySelector(div)
+div.innerHTML = "ver"
+let a=10;
+let p=document.createElement("p");
+div.oppendChild(p)
+let btn =document.createElement("button");
+div.oppendChild(btn)
+btn.onclick=()=>{guardarProduct(a) }
 }
 
 
+function gurdarProducto(){
+
+
+
+}
